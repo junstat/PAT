@@ -1,0 +1,7 @@
+.idea
+cmake-build-debug
+input
+template.cpp
+CMakeLists.txt
+demo.*
+.DS_Store
