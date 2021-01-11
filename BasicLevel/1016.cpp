@@ -1,31 +1,24 @@
 //
-// Created by jun on 2020/7/21.
-//
-#include <iostream>
-#include <vector>
+// @Time   : 2021/1/16 12:16
+// @Author : junstat@163.com
 
-using namespace std;
+#include "BasicLevel.h"
 
-/*
-   DA: 因为 0 < A, B < 10 ^ 10, 所以只能用string 存储 A, B, 进一步 char da, db。
-   算法: 遍历 A , pa = 10 * pa + da - '0' if  A[i] == da; B 同理
-        最后计算 pa + pb 输出即可
- */
-int main() {
+int basicLevel1016() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1016.txt", "r", stdin);
+    freopen("1016.input", "r", stdin);
 #endif
     string A, B;
-    char da, db;
-    int pa = 0, pb = 0;
-    cin >> A >> da >> B >> db;
-    for (char a: A)
-        if (a == da)
-            pa = pa * 10 + da - '0';
-    for (char b : B)
-        if (b == db)
-            pb = pb * 10 + db - '0';
-    printf("%d", pa + pb);
+    char Da, Db;
+    int Pa = 0, Pb = 0;
+    cin >> A >> Da >> B >> Db;
+    for (auto c : A) {
+        if (c == Da) Pa = 10 * Pa + c - '0';
+    }
+    for (auto c : B) {
+        if (c == Db) Pb = 10 * Pb + c - '0';
+    }
+    printf("%d", Pa + Pb);
     return 0;
 }

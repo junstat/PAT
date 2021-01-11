@@ -1,36 +1,40 @@
 //
-// Created by jun on 2020/4/24.
+// Created by jun on 2021/1/11.
 //
 
-#include <iostream>
-#include <string>
-
-using namespace std;
+#include "BasicLevel.h"
 /*
-    1、数组自定义哈希表 str ，保存数字与拼音数字的对应；
-    2、string读入s，逐位求和-> int res；
-    3、int res->string num;
-    4、逐位读取num，从str中取出结果并输出，注意格式。
+ * 10的100次幂已经超过long long的范围，只能用string保存；
+ * 遍历数据源，逐位转成数字，并求和；
  */
 
 
-int main() {
+/**
+ * key point:
+ * 数组：
+ * string api
+ * int -> str
+ * str -> int
+ */
+
+using namespace std;
+
+int basicLevel1002() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1002.txt", "r", stdin);
+    freopen("1002.input", "r", stdin);
 #endif
-    string s;
     int res = 0;
-    cin >> s;
+    string source;
     string str[10] = {"ling", "yi", "er", "san", "si", "wu", "liu", "qi", "ba", "jiu"};
-    for (int i = 0; i < s.length(); i++) {
-        res += (s[i] - '0');
+    cin >> source;
+    for (char c: source) {
+        res += (c - '0');
     }
-    string num = to_string(res);
-    for (int i = 0; i < num.length(); i++) {
+    string strRes = to_string(res);
+    for (int i = 0; i < strRes.size(); i++) {
         if (i != 0) cout << " ";
-        cout << str[num[i] - '0'];
+        cout << str[strRes[i] - '0'];
     }
     return 0;
 }
-

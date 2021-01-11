@@ -1,21 +1,16 @@
 //
-// Created by jun on 2020/7/12.
+// Created by jun on 2021/1/11.
 //
-
-#include <iostream>
-
-using namespace std;
+#include "BasicLevel.h"
 
 /*
-   给定输入 n
-    n /= 2;             if n % 2 == 0
-    n = (3*n + 1) /2;   else
+ * n /= 2, if n %2 == 0
+ * n = (3n+1) /2, else
  */
-
-int main() {
+int basicLevel1001() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1001.txt", "r", stdin);
+    freopen("1001.input", "r", stdin);
 #endif
     int n, step = 0;
     scanf("%d", &n);

@@ -1,23 +1,21 @@
 //
-// Created by jun on 2020/7/18.
+// Created by jun on 2021/1/12.
 //
 
-#include <iostream>
-
-using namespace std;
+#include "BasicLevel.h"
 
 /*
-   1. input n -> arrays nums;
-   2. 输出 nums[2] 次 'B', nums[1] 次 'S', 1~nums[0],  because n < 1000;
+   1. 读入 n: int
+   2. n -> int nums[3]
+   3. nums[2]个B, nums[1]个S, 1 ~ nums[0]
  */
-int main() {
+int basicLevel1006() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1006.txt", "r", stdin);
+    freopen("1006.input", "r", stdin);
 #endif
-    int n, i = 0;
-    cin >> n;
-    int nums[3] = {0};
+    int n, i = 0, nums[3] = {0};
+    scanf("%d", &n);
     while (n) {
         nums[i++] = n % 10;
         n /= 10;
@@ -30,4 +28,3 @@ int main() {
         cout << i;
     return 0;
 }
-

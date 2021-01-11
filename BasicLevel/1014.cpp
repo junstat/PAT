@@ -1,15 +1,9 @@
 //
-// Created by jun on 2020/4/25.
-//
+// @Time   : 2021/1/14 20:55
+// @Author : junstat@163.com
 
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <string>
-#include <vector>
-#include <algorithm>
+#include "BasicLevel.h"
 
-using namespace std;
 /*
     1、寻找第1、第2个字符串中匹配的字符
         1.1 第1次匹配的字符x，
@@ -19,7 +13,7 @@ using namespace std;
     2、遍历第3、第4个字符串，取匹配的下标 -> minute
 */
 
-int main() {
+int basicLevel1014() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1014.txt", "r", stdin);

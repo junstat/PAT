@@ -1,52 +1,45 @@
 //
-// Created by jun on 2020/7/18.
+// Created by jun on 2021/1/11.
 //
-
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-using namespace std;
+#include "BasicLevel.h"
 
 /*
-   1. 输入 n;  nums -> vector;
-   2. int covered[101] = {0}, 用作标记num是否被覆盖，1 -> 覆盖，0 -> 为覆盖，默认为0;
-   3. 对nums排序, 输出covered[num] == 0的 num即可。
-
-   关于打表下标越界的处理：
-   1. 把数组长度定义长一些，如 10000
-   2. 访问数组元素的时候判断是否越界。
+ * 1. 预设变量，记录覆盖数 int coverNums[101]; 记录输入数字 vector<int> inputNums(k);
+ * 2. 遍历，读入数字 n
+ *     若 n 已被覆盖，跳过处理下一个数组
+ *     不然，计算 卡拉兹猜想
+ * 3. 逆序排序 inputNums, 遍历，判断是否被覆盖
+ * 
+ * key point: vector、sort
  */
 
-bool cmp(int a, int b) { return a > b; }
-
-int main() {
+int basicLevel1005() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1005.txt", "r", stdin);
+    freopen("1005.input", "r", stdin);
 #endif
-    int n, num, firstPrint = 1;
-    cin >> n;
-    vector<int> nums(n);
-    int covered[101] = {0};
-    for (int i = 0; i < n; i++) {
-        cin >> num;
-        nums[i] = num;
-        while (num != 1) {
-            if (num % 2 != 0) num = 3 * num + 1;
-            num /= 2;
-            if (num <= 100) {  // 打表在最后一个case出现段错误：数组下标越界
-                if (covered[num]) break;
-                covered[num] = 1;
+    int k, n, coverNums[101] = {0}, notFirstPrint = 0;
+    cin >> k;
+    vector<int> inputNums(k);
+    for (int i = 0; i < k; i++) {
+        cin >> n;
+        inputNums[i] = n;
+        if (coverNums[n] == 1) continue;
+        while (n != 1) {
+            if (n % 2 != 0) n = 3 * n + 1;
+            n /= 2;
+            if (n < 101) {  // n在计算过程中可能超过100
+                if (coverNums[n]) break;
+                coverNums[n] = 1;
             }
         }
     }
-    sort(nums.begin(), nums.end(), cmp);
-    for (int x: nums) {
-        if (!covered[x]) {
-            if (firstPrint) { cout << x; firstPrint = 0; }
-            cout << " " << x;
-        }
+    sort(inputNums.begin(), inputNums.end(), [](int a, int b) { return a > b; });
+    for (int num: inputNums) {
+        if (coverNums[num]) continue;
+        if (notFirstPrint) cout << " ";  // 不是第一次输出先输出空格
+        cout << num;
+        notFirstPrint = 1;
     }
     return 0;
 }

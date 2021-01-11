@@ -2,11 +2,7 @@
 // Created by jun on 2020/4/24.
 //
 
-#include <iostream>
-#include <string>
-#include <map>
-
-using namespace std;
+#include "BasicLevel.h"
 /*
     1、形如xPATx都可以获得"答案正确"
     以下为正确:
@@ -20,38 +16,49 @@ using namespace std;
     I.   PAT --> (as aPbTc)a=c=""，b="A" --> PAAT、PAAAAAT,中间多少个A均正确
     II.  APATA --> a=b=c="A" --> APAATAA(a="A", b=c="AA") --> APAAATAAA
     III. AAPATAA --> a=c="AA", b="A" --> AAPAATAAAA --> AAPAAATAAAAAA
-    Summary:
-    1、只能有1个P和1个T；
-    2、P和T之间不能没有A；
-    3、a * between(b, T) = after(c)
+    summary:
+    1、仅含PAT
+    2、P在T之前
+    3、len(c) = len(a) * len(b)
+    设输入为s，如
+    01234
+    APATA
+    len(a) = pLastIndex
+    len(b) = tLastIndex - pLastIndex - 1
+    len(c) = len(s) - tLastIndex - 1
+
+    key point:
+    map
 */
 
-int main() {
+int basicLevel1003() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1003.txt", "r", stdin);
+    freopen("1003.input", "r", stdin);
 #endif
-    int n, pLastIndex = 0, tLastIndex = 0;
+    int n, pLastIndex = 0, tLastIndex = 0, len_a = 0, len_b = 0, len_c = 0;
     string s;
-    cin >> n;
+    scanf("%d", &n);
     for (int i = 0; i < n; i++) {
         cin >> s;
-        map<char, int> m;
+        map<char, int> countMap;
         for (int j = 0; j < s.size(); j++) {
-            m[s[j]]++;
+            countMap[s[j]]++;
             if (s[j] == 'P') pLastIndex = j;
             else if (s[j] == 'T') tLastIndex = j;
         }
-        if (m['P'] == 1 &&
-            m['A'] != 0 &&
-            m['T'] == 1 &&
-            m.size() == 3 &&
-            tLastIndex - pLastIndex != 1 &&
-            pLastIndex * (tLastIndex - pLastIndex - 1) == s.length() - tLastIndex - 1)
+        len_a = pLastIndex;
+        len_b = tLastIndex - pLastIndex - 1;
+        len_c = s.size() - tLastIndex - 1;
+        if (countMap.size() == 3 &&
+            countMap['P'] == 1 &&
+            countMap['T'] == 1 &&
+            countMap['A'] > 0 &&
+            tLastIndex - pLastIndex > 1 &&
+            len_a * len_b == len_c)
             printf("YES\n");
         else
             printf("NO\n");
     }
     return 0;
 }
-

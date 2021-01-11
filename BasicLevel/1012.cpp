@@ -1,11 +1,8 @@
 //
-// Created by jun on 2020/7/19.
-//
-#include <iostream>
-#include <vector>
+// @Time   : 2021/1/13 20:52
+// @Author : junstat@163.com
 
-using namespace std;
-
+#include "BasicLevel.h"
 /*
    1. 数据分类: input num -> vectors[5]
    2. 对于每一类数据按照要求计算结果并输出即可
@@ -15,7 +12,7 @@ using namespace std;
         2.4 平均数, 要求 %.1f
         2.5 max
  */
-int main() {
+int basicLevel1012() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1012.txt", "r", stdin);

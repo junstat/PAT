@@ -1,20 +1,19 @@
 //
-// Created by jun on 2020/7/18.
-//
+// @Time   : 2021/1/12 21:36
+// @Author : junstat@163.com
 
-#include <iostream>
-
-using namespace std;
+#include "BasicLevel.h"
 
 /*
-   1. (ax^b)' = a*b*x^(b-1): a b -> a*b (b-1) if b
-   2. 0 0 if 零多项式
+   (ax^b)' = a*b*x^(b-1)
+   故 读入 a b
+   输出 a*b b-1
+   注意考虑, 若输入 0 0 的情况
  */
-
-int main() {
+int basicLevel1010() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1010.txt", "r", stdin);
+    freopen("1010.input", "r", stdin);
 #endif
     int a, b, notFirstPrint = 0;
     while (cin >> a >> b)

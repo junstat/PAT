@@ -1,14 +1,13 @@
 //
-// Created by jun on 2020/7/18.
-//
-#include <iostream>
+// @Time   : 2021/1/13 20:45
+// @Author : junstat@163.com
 
-using namespace std;
+#include "BasicLevel.h"
 
 /*
    注意范围即可
  */
-int main() {
+int basicLevel1011() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1011.txt", "r", stdin);

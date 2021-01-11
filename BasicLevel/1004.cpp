@@ -1,41 +1,37 @@
 //
-// Created by jun on 2020/7/18.
+// Created by jun on 2021/1/11.
 //
 
-#include <iostream>
-#include <string>
-using namespace std;
-
+#include "BasicLevel.h"
 
 /*
-   1. 输入 -> 姓名，学号，成绩 -> string name, string studentId,int  score
-   2. maxScore = -1; minScore = 101;
-   3. 遍历即可 -> maxName, minName, maxStudentId, minStudentId;
+ * 1. 预设最好成绩 maxScore = -1, 最低成绩minScore = 101,
+ *    maxScoreName, maxScoreStuNum, minScoreName, minScoreStuNum
+ * 2. 遍历读入 name, stuNum, score 根据score值，更新相应信息
  */
 
-int main() {
+int basicLevel1004() {
 #ifdef ONLINE_JUDGE
 #else
-    freopen("input/1004.txt", "r", stdin);
+    freopen("1004.input", "r", stdin);
 #endif
     int n, score, maxScore = -1, minScore = 101;
-    string name, studentId, maxName, minName, maxStudentId, minStudentId;
-    cin >> n;
+    string name, stuNum, maxScoreName, maxScoreStuNum, minScoreName, minScoreStuNum;
+    scanf("%d", &n);
     for (int i = 0; i < n; i++) {
-        cin >> name >> studentId >> score;
+        cin >> name >> stuNum >> score;
         if (score > maxScore) {
             maxScore = score;
-            maxName = name;
-            maxStudentId = studentId;
+            maxScoreName = name;
+            maxScoreStuNum = stuNum;
         }
         if (score < minScore) {
             minScore = score;
-            minName = name;
-            minStudentId = studentId;
+            minScoreName = name;
+            minScoreStuNum = stuNum;
         }
     }
-    cout << maxName << " " << maxStudentId << "\n"
-         << minName << " " << minStudentId;
+    cout << maxScoreName << " " << maxScoreStuNum << "\n"
+         << minScoreName << " " << minScoreStuNum;
     return 0;
 }
-

@@ -1,11 +1,8 @@
 //
-// Created by jun on 2020/7/19.
-//
+// @Time   : 2021/1/14 20:35
+// @Author : junstat@163.com
 
-#include <iostream>
-#include <vector>
-
-using namespace std;
+#include "BasicLevel.h"
 
 /*
    1. 素数判断
@@ -13,13 +10,7 @@ using namespace std;
    3. 重置cnt计数器，每10个换行
  */
 
-bool isPrime(int n) {
-    for (int i = 2; i * i <= n; i++)
-        if (n % i == 0) return false;
-    return true;
-}
-
-int main() {
+int basicLevel1013() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1013.txt", "r", stdin);
@@ -35,7 +26,7 @@ int main() {
         num++;
     }
     cnt = 0;
-    for (int x: nums){
+    for (int x: nums) {
         cnt++;
         if (cnt % 10 != 1) printf(" ");
         printf("%d", x);

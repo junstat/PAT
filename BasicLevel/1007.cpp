@@ -2,22 +2,14 @@
 // Created by jun on 2020/7/18.
 //
 
-#include <iostream>
-
-using namespace std;
+#include "BasicLevel.h"
 
 /*
    1. isPrime -> 判断素数
    2. 遍历5~N, isPrime(i) && isPrime(i-2) -> 计数器+1;
  */
 
-bool isPrime(int n) {
-    for (int i = 2; i * i <= n; i++)
-        if (n % i == 0) return false;
-    return true;
-}
-
-int main() {
+int basicLevel1007() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("input/1007.txt", "r", stdin);
